@@ -9,15 +9,7 @@
             <form action="{{ route('project.store') }}" method="POST">
                 @csrf
 
-                @if($errors->any())
-                
-                    <div class="alert alert-danger" role="alert">
-                        @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                        @endforeach
-                    </div>
-                
-                @endif
+                @include('partials.validations-errors')
             
                 <div class="input-group mb-3">
                     <span class="input-group-text"  id="inputGroup-sizing-default">Titulo</span>

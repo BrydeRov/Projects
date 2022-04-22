@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
+use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -40,18 +41,13 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveProjectRequest $request)
     {
         //
 
 
-        $fields = request()->validate([
-            'title' => 'required',
-            'url' => 'required',
-            'description' => 'required',
-        ]);
-
-        Project::create($fields);
+ 
+        Project::create($request->validated());
 
         return redirect()->route('project.index');
 
@@ -82,6 +78,11 @@ class ProjectController extends Controller
     public function edit($id)
     {
         //
+
+        return view('projects.edit' , [
+            'project' => Project::findOrFail($id),
+        ]);
+
     }
 
     /**
@@ -91,9 +92,13 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Project $project, SaveProjectRequest $request)
     {
         //
+        $project->update($request->validated());
+
+        return redirect()->route('project.show' ,$project );
+
     }
 
     /**
@@ -102,8 +107,11 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
         //
+        $project->delete();
+
+        return redirect()->route('project.index');
     }
 }

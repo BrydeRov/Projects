@@ -4,7 +4,7 @@
 
     @section('content')
     
-    <div class="container" style="width: 50%; border: outset; padding: 15px 15px; border-radius: 15px;">
+    <div class="container mt-4" style="width: 50%; border: outset; padding: 15px 15px; border-radius: 15px;">
         @if($errors->any())
             <div class="alert alert-danger" role="alert">
                 @foreach($errors->all() as $error)
@@ -14,6 +14,13 @@
             
         @endif
         <h1>Contact</h1>
+
+        @if (session('status'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{session('status')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>            
+        @endif
 
         <form action="" method="POST">
             @csrf

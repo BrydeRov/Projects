@@ -42,6 +42,8 @@ class ContactController extends Controller
             "subject" => "required",
             "content" => "required",
         ]);
+
+        return back()->with('status' , 'Recibimos tu mensaje, te respondemos en menos e 24hrs');
     }
 
     /**
