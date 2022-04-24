@@ -2,7 +2,10 @@
 
     @section('title' , 'Portfolio')
 
-    @section('content')
+    @section('contenido')
+
+    
+
 
        <div class="card mx-5 my-3">
            <div class="card-header">

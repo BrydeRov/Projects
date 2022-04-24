@@ -2,7 +2,7 @@
 
 @section('title' , 'Portafolio | Editar ')
 
-@section('content')
+@section('contenido')
 
     <div class="container card mt-5 w-50">
         <h1>Editar proyecto</h1>

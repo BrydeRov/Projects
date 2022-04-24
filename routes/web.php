@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -16,10 +17,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('contact', ContactController::class);
+Auth::routes();
 
-Route::resource('project', ProjectController::class);
+Route::resource('contact', ContactController::class)->middleware('auth');
+
+Route::resource('project', ProjectController::class)->middleware('auth');
 
 Route::view('/' , 'home')->name('home');
-Route::view('/about' , 'about')->name('about');
+Route::view('/about' , 'about')->name('about')->middleware('auth');
 
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

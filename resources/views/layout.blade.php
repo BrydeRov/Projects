@@ -7,7 +7,9 @@
 
     @include('partials.nav')
 
-    @yield('content')
+    @include('partials.session-status')
+
+    @yield('contenido')
     
     @include('partials.scripts')
 </body>

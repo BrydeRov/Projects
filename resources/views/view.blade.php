@@ -1,12 +1,12 @@
 
-@extends('layout')
+@extends('layouts.app')
 
 @section('extra-styles')
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
 @section('title' , 'Home')
 
-@section('contenido')
+@section('content')
 
 <header>
 

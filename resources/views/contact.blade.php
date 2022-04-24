@@ -2,7 +2,7 @@
 
     @section('title' , 'Contact')
 
-    @section('content')
+    @section('contenido')
     
     <div class="container mt-4" style="width: 50%; border: outset; padding: 15px 15px; border-radius: 15px;">
         @if($errors->any())
@@ -16,10 +16,10 @@
         <h1>Contact</h1>
 
         @if (session('status'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{session('status')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>            
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{session('status')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>            
         @endif
 
         <form action="" method="POST">

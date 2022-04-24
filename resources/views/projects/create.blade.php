@@ -2,7 +2,7 @@
 
     @section('title' , 'Crear Proyecto')
 
-    @section('content')
+    @section('contenido')
 
         <div class="container card mt-5 w-50">
             <h1>Crear nuevo proyecto</h1>
