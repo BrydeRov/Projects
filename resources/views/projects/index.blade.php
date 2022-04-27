@@ -12,12 +12,14 @@
                <div class="row">
                    <div class="col"><h1>Proyectos</h1></div>
                    <div class="col text-end justify-content-center">
-                    <a href="{{ route('project.create') }}" 
-                        type="button" 
-                        class="btn btn-info" 
-                        style="text-decoration: none">
-                        Crear Proyecto
-                    </a>
+                       @auth
+                            <a href="{{ route('project.create') }}" 
+                                type="button" 
+                                class="btn btn-info" 
+                                style="text-decoration: none">
+                                Crear Proyecto
+                            </a>
+                        @endauth
                    </div>
                </div>
 
