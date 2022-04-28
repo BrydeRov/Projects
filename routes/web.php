@@ -21,12 +21,20 @@ Auth::routes();
 
 Route::resource('contact', ContactController::class)->middleware('auth');
 
-Route::resource('project', ProjectController::class)->middleware('auth');
+Route::resource('project', ProjectController::class);
 
 Route::view('/about' , 'about')->name('about')->middleware('auth');
 
+Route::view('/' , 'Home')->name('Home');
 
-
+<<<<<<< HEAD
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
 ->name('home')
 ->middleware('auth');
+=======
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'] , function(){
+    
+});
+>>>>>>> 5ea8c604f56110e29512c2e393aff38c23e76006
