@@ -23,9 +23,10 @@ Route::resource('contact', ContactController::class)->middleware('auth');
 
 Route::resource('project', ProjectController::class)->middleware('auth');
 
-Route::view('/' , 'home')->name('home');
 Route::view('/about' , 'about')->name('about')->middleware('auth');
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
+->name('home')
+->middleware('auth');
