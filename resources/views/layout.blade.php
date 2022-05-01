@@ -9,7 +9,9 @@
 
     @include('partials.session-status')
 
-    @yield('contenido')
+    <main class="mt-3">
+        @yield('contenido')
+    </main>
     
     @include('partials.scripts')
 </body>

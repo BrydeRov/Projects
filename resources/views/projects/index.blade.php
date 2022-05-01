@@ -1,51 +1,42 @@
 @extends('layout')
 
-    @section('title' , 'Portfolio')
+@section('title' , 'Portfolio')
 
-    @section('contenido')
+@section('contenido')
+<div class="container">
 
-    
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Proyectos</h1>
+
+        @auth
+        <a href="{{ route('project.create') }}" type="button" class="btn btn-info" style="text-decoration: none">
+            Crear Proyecto
+        </a>
+        @endauth
+    </div>
 
 
-       <div class="card mx-5 my-3">
-           <div class="card-header">
-               <div class="row">
-                   <div class="col"><h1>Proyectos</h1></div>
-                   <div class="col text-end justify-content-center">
-                       @auth
-                            <a href="{{ route('project.create') }}" 
-                                type="button" 
-                                class="btn btn-info" 
-                                style="text-decoration: none">
-                                Crear Proyecto
-                            </a>
-                        @endauth
-                   </div>
-               </div>
-
-           </div>
-        
-           <div class="list-group">
-            @isset($projects)
+    <ul class="list-group">
+        @forelse ($projects as $project)
+        <li class="list-group-item border-0 mb-3 shadow-sm">
+            <a class="d-flex justify-content-between align-items-center text-secondary" href="{{ route('project.show', $project) }}" style="text-decoration: none;">
+                <span class="">{{ $project->title }}</span>
+                <span>{{ $project->created_at->format('d/m/Y') }}</span>
                 
-             @foreach ($projects as $project)
-                    <button type="button" class="list-group-item list-group-item-action">
-                        <a href="{{ route('project.show', $project) }}" style="text-decoration: none;">{{ $project->title }}</a>
-                    </button>
-                @endforeach
-    
+            </a>
+        </li>
+        @empty
+        <li>No hay proyectos por mostrar</li>
+        @endforelse
+    </ul>
 
-                @else
-                    <h2>No hay proyectos para mostrar</h2>
-             @endisset
-             {{$projects->links()}}
-            
-             
-            </div>
 
-                
-       </div>
+    {{$projects->links()}}
 
 
 
-    @endsection
+
+</div>
+
+
+@endsection

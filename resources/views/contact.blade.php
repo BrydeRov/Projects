@@ -25,25 +25,55 @@
         <form action="" method="POST">
             @csrf
 
-            <div class="input-group mb-3">
-                <span class="input-group-text"  id="inputGroup-sizing-default">Nombre</span>
-                <input type="text" name="name" value="{{old('name')}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <div class="form-floating mb-3">
+                <input type="text" 
+                name="name" 
+                value="{{old('name')}}" 
+                class="form-control" 
+                aria-label="Sizing example input" 
+                aria-describedby="inputGroup-sizing-default"  
+                id="validationCustom01"/>
+                <label for="floatingInput">Nombre</label>
             </div>
+
             
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Correo</span>
-                <input type="email" name="email" value="{{old('email')}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
+            
+            <div class="form-floating mb-3">
+                <input type="email" 
+                name="email" 
+                value="{{old('email')}}" 
+                class="form-control" 
+                aria-label="Sizing example input" 
+                aria-describedby="inputGroup-sizing-default"  
+                id="validationCustom01"/>
+                <label for="floatingInput">Correo</label>
             </div>
         
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Asunto</span>
-                <input type="text" name="subject" value="{{old('subject')}}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" >
+            <div class="form-floating mb-3">
+                <input type="text" 
+                name="subject" 
+                value="{{old('subject')}}" 
+                class="form-control" 
+                aria-label="Sizing example input" 
+                aria-describedby="inputGroup-sizing-default" 
+                id="validationCustom01"/>
+                <label for="floatingInput">Asunto</label>
+            </div>
+
+
+            <div class="form-floating">
+                <textarea 
+                    class="form-control" 
+                    id="floatingTextarea2"                         
+                    name="content"
+                    style="height: 100px">
+
+                    {{old('content')}}
+                </textarea>
+                <label for="floatingTextarea2">Mensaje</label>
             </div>
     
-            <div class="input-group">
-                <span class="input-group-text">Mensaje</span>
-                <textarea class="form-control" name="content" aria-label="With textarea">{{old('content')}}</textarea>
-            </div>
+           
 
             <div class="d-grid gap-2"  style="margin-top:5%; text-align: center;">
                 <button class="btn btn-primary">Enviar</button>
