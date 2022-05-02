@@ -6,10 +6,15 @@
 
         <div class="container border mt-5 justify-content-center align-items-center" style=" border-radius: 15px;">
             <h1 class="my-4">Crear nuevo proyecto</h1>
-            <form action="{{ route('project.store') }}" method="POST" class="needs-validation" novalidate>
+            <form action="{{ route('project.store') }}" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
                 @csrf
 
                 @include('partials.validations-errors')
+
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Imagen del proyecto</label>
+                    <input name="image" class="form-control" type="file" id="formFile">
+                </div>
             
                 <div class="form-floating mb-3">
                     <input type="text" 

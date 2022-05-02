@@ -18,6 +18,7 @@
                 </div>
             
             @endif
+           
         
             <div class="input-group mb-3">
                 <span class="input-group-text"  id="inputGroup-sizing-default">Titulo</span>
@@ -34,8 +35,16 @@
                 <span class="input-group-text">Descripción</span>
                 <textarea class="form-control" name="description" aria-label="With textarea">{{ old('description' , $project->description) }}</textarea>
             </div>
+
+            <div class="input-group">                
+                <input class="form-control my-3" name="image" value="{{ old('image' , $project->image) }}" class="form-control" type="file" id="formFile">
+                
+                @if ($project->image)
+                    <img class="img-thumbnail rounded float-start" src="/storage/{{$project->image}}" alt="{{$project->title}}">                    
+                @endif             
+            </div>
         
-            <div class="d-grid gap-2"  style="margin-top:5%; text-align: center;">
+            <div class="d-grid gap-2 my-2"  style="margin-top:5%; text-align: center;">
                 <button class="btn btn-primary">Actualizar</button>
             </div>
         

@@ -49,9 +49,12 @@ class ProjectController extends Controller
     {
         //
 
+        $project = new Project($request->validated());
 
+
+        $project->image = $request->file('image')->store('ProjectImages');
  
-        Project::create($request->validated());
+        $project->save();
 
         return redirect()->route('project.index')->with('created', 'El proyecto se ha creado exitosamente');
 

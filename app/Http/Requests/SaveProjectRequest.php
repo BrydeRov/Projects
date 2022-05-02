@@ -28,11 +28,8 @@ class SaveProjectRequest extends FormRequest
         return [
             //
 
-            'title' => 'required',
-            'url' => [
-                'required', 
-                Rule::unique('required')->ignore($this->route('project'))
-            ],
+            'title' => ['required', Rule::unique('projects')->ignore($this->route('project'))],
+            'url' => ['required', Rule::unique('projects')->ignore($this->route('project'))],
             'description' => 'required',
         ];        
     }

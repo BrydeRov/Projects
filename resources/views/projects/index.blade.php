@@ -14,21 +14,33 @@
         </a>
         @endauth
     </div>
-
-
-    <ul class="list-group">
+ 
+    <div class="d-flex flex-wrap justify-content-between align-items-start">
         @forelse ($projects as $project)
-        <li class="list-group-item border-0 mb-3 shadow-sm">
-            <a class="d-flex justify-content-between align-items-center text-secondary" href="{{ route('project.show', $project) }}" style="text-decoration: none;">
-                <span class="">{{ $project->title }}</span>
-                <span>{{ $project->created_at->format('d/m/Y') }}</span>
                 
-            </a>
-        </li>
+        <div class="card" style="width: 18rem;">
+           
+                @if ($project->image)
+                    <img class="img-thumbnail rounded float-start" src="/storage/{{$project->image}}" alt="{{$project->title}}">                    
+                @endif 
+                <div class="card-body">
+                
+                <h5 class="card-title">
+                    <a class="d-flex justify-content-between align-items-center text-primary" href="{{ route('project.show', $project) }}" style="text-decoration: none;">
+                        {{ $project->title }}
+                    </a>
+                </h5>
+                <p class="card-description">{{ $project->description }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+           
+        </div>                
+
         @empty
         <li>No hay proyectos por mostrar</li>
         @endforelse
-    </ul>
+    </div>
+
 
 
     {{$projects->links()}}
