@@ -18,7 +18,7 @@
     <div class="d-flex flex-wrap justify-content-between align-items-start">
         @forelse ($projects as $project)
                 
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-3" style="width: 18rem;">
            
                 @if ($project->image)
                     <img class="img-thumbnail rounded float-start" src="/storage/{{$project->image}}" alt="{{$project->title}}">                    

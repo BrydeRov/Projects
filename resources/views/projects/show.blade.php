@@ -4,41 +4,48 @@
 
 @section('contenido')
 
-    <div class="card m-4">
-        <div class="card-header">
-            <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <h1>{{ $project->title }}</h1>
-                  </div>
-                  <div class="col col-lg-2 text-end">
-                      @auth
-                        <div class="row">
-                            <div class="col">
-                                <a href="{{ route('project.edit', $project) }}" class="my-2" type="button">
-                                    <span class="badge bg-info text-dark">Editar</span>
-                                </a> 
-                            </div>
-                            <div class="col">
-                                <form action="{{route('project.destroy', $project)}}" style="margin: 0px; border:none;" method="POST">
-                                    @csrf @method('DELETE')
-                                    <button class="my-2">
-                                        <span class="badge bg-danger text-white">Borrar</span>
-                                    </button>
-                                </form> 
-                            </div>
-                        </div>                      
-                     @endauth
-                  </div>
-                                  
-                </div>
-              </div>
-        </div>
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 25rem;">
+           
+        @if ($project->image)
+            <img class="img-thumbnail rounded float-start" src="/storage/{{$project->image}}" alt="{{$project->title}}">                    
+        @endif 
         <div class="card-body">
-            <p>{{ $project->description }}</p>
-            <p>{{ $project->created_at->diffForHumans() }}</p>
+            
+            <div class="row">
+                <div class="col align-items-center">
+                    <h5 class="card-title">
+                        {{ $project->title }}
+                    </h5>
+                </div>
+                <div class="col align-items-center text-end">
+                        
+                    @auth                       
+                        <div class="btn-group btn-group-sm mt-2 text-end" role="group" aria-label="...">
+                            <a class="btn btn-primary" type="button" href="{{ route('project.edit', $project) }}">
+                                <span class="text-white">Editar</span>
+                            </a>
+                        <button class="btn btn-danger" type="button">
+                            <form action="{{route('project.destroy', $project)}}" style="margin: 0px; border:none;" method="POST">
+                                @csrf @method('DELETE')                
+                                    <span class="text-white">Borrar</span>            
+                            </form>  
+                        </button>
+                        </div>                                    
+                    @endauth
+    
+                </div>
+            </div>
+            
+            <h6 class="mt-3">Descripción del proyecto</h6><br>
+            <p class="card-description">{{ $project->description }}</p>
+    
         </div>
     </div>
+</div>
+
+
+
 
 
 
