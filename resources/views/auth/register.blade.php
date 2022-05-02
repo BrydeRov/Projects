@@ -67,10 +67,10 @@
                             <div class="col-md-6">
                                 <select name="profile" id=profile" class="form-select" id="inputGroupSelect01" required>
                                   <option selected disabled value="null">Escoger perfil....</option>
-                                  <option value="Administrador">Administrador</option>
-                                  <option value="Cliente">Cliente</option>
+                                  <option value="Admin">Admin</option>
+                                  <option value="Client">Cliente</option>
                                 </select>
-                              </div> 
+                            </div> 
 
                                 @error('profile')
                                     <span class="invalid-feedback" role="alert">
