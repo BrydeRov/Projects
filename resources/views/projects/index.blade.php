@@ -18,7 +18,7 @@
     <div class="d-flex flex-wrap justify-content-between align-items-start">
         @forelse ($projects as $project)
                 
-        <div class="card mb-3" style="width: 18rem;">
+        <div class="card mb-3" style="width: 16rem;">
            
                 @if ($project->image)
                     <img class="img-thumbnail rounded float-start" src="/storage/{{$project->image}}" alt="{{$project->title}}">                    
@@ -26,12 +26,13 @@
                 <div class="card-body">
                 
                 <h5 class="card-title">
-                    <a class="d-flex justify-content-between align-items-center text-primary" href="{{ route('project.show', $project) }}" style="text-decoration: none;">
-                        {{ $project->title }}
-                    </a>
+                    {{ $project->title }}
+                    
                 </h5>
                 <p class="card-description">{{ $project->description }}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a class="btn btn-primary" href="{{ route('project.show', $project) }}" style="text-decoration: none;">
+                    Ver más...
+                </a>
                 </div>
            
         </div>                

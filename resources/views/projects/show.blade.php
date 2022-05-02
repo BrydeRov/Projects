@@ -4,6 +4,7 @@
 
 @section('contenido')
 
+
 <div class="d-flex justify-content-center">
     <div class="card" style="width: 25rem;">
            
@@ -25,13 +26,14 @@
                             <a class="btn btn-primary" type="button" href="{{ route('project.edit', $project) }}">
                                 <span class="text-white">Editar</span>
                             </a>
-                        <button class="btn btn-danger" type="button">
-                            <form action="{{route('project.destroy', $project)}}" style="margin: 0px; border:none;" method="POST">
-                                @csrf @method('DELETE')                
-                                    <span class="text-white">Borrar</span>            
-                            </form>  
-                        </button>
-                        </div>                                    
+                            <a class="btn btn-danger" type="button" href="#" onclick="document.getElementById('delete-project').submit()">
+                                <span class="text-white">Borrar</span>
+                            </a>                                                    
+                        </div>  
+                        <form method="POST" action="{{ route('project.destroy' , $project) }}" id="delete-project">
+                            @csrf @method('DELETE')
+                        </form>
+                                                         
                     @endauth
     
                 </div>

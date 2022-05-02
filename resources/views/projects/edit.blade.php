@@ -6,7 +6,7 @@
 
     <div class="container card mt-5 w-50">
         <h1>Editar proyecto</h1>
-        <form action="{{ route('project.update' , $project) }}" method="POST">
+        <form action="{{ route('project.update' , $project) }}" method="POST" enctype="multipart/form-data">
             @csrf @method('PATCH')
 
             @if($errors->any())

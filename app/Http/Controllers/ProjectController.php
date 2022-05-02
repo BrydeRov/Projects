@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
 use App\Http\Requests\SaveProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -102,7 +103,20 @@ class ProjectController extends Controller
     public function update(Project $project, SaveProjectRequest $request)
     {
         //
-        $project->update($request->validated());
+        if($request->hasFile('image')){
+            Storage::delete($project->image);
+
+            $project->fill($request->validated());
+
+            $project->image = $request->file('image')->store('ProjectImages');
+
+            $project->save();
+        }else{
+            $project->update(array_filter($request->validated()));
+        }
+
+        
+        
 
         return redirect()->route('project.show' ,$project )->with('updated', 'El proyecto se ha actualizado exitosamente');
 
@@ -117,6 +131,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+        Storage::delete($project->image);
         $project->delete();
 
         return redirect()->route('project.index')->with('destroyed', 'El proyecto se ha elimindao exitosamente');
