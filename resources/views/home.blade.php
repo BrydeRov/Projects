@@ -2,7 +2,7 @@
 @extends('layout')
 
 @section('extra-styles')
-<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<link rel="stylesheet" href="/css/home.css"/>
 
 @section('title' , 'Home')
 
@@ -15,18 +15,18 @@
   
     <!-- The HTML5 video element that will create the background video on the header -->
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-      <source src="images/background-home.mp4" type="video/mp4">
+      <source src="/images/background-home.mp4" type="video/mp4">
         
     </video>
   
     <!-- The header content -->
     <div class="container h-100">
-      <div class="d-flex h-100 text-center align-items-center">
-        <div class="w-100 text-white">
-          <h1 class="display-3">Home</h1>
+      <div class="d-flex h-100 justify-content-center text-center align-items-center">
+        <div class="w-50 text-white">
+          <h1 class="display-3 my-4 m">Home</h1>
           
             <!--Carta-->
-            <div class="card text-center text-black">
+            <div class="card text-center text-black mb-5" style=>
                 <div class="card-header">
                   Featured
                 </div>

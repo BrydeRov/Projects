@@ -9,7 +9,7 @@
 
     @include('partials.session-status')
 
-    <main class="mt-3">
+    <main class="">
         @yield('contenido')
     </main>
     
