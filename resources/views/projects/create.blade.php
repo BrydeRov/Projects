@@ -28,6 +28,15 @@
                     <label for="floatingInput">Titulo</label>
                 </div>
 
+                <div class="form-floating mb-3">
+                    <select name="category_id" id="" class="form-control">
+                        <option disabled value="" selected>Escoger Categoria...</option>
+                            @foreach($categories as $id => $title)
+                                <option value="{{$id}}">{{ $title }}</option>
+                            @endforeach
+                    </select>
+                </div>
+
 
                 <div class="form-floating mb-3">
                     <input type="text" 

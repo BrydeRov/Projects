@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
+use App\Models\Category;
 use App\Http\Requests\SaveProjectRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +38,10 @@ class ProjectController extends Controller
     {
         //
 
-        return view('projects.create');
+        return view('projects.create' , [
+            'project' => new Project,
+            'categories' => Category::pluck('title' , 'id'),
+        ]);
     }
 
     /**
@@ -86,9 +90,9 @@ class ProjectController extends Controller
     public function edit($id)
     {
         //
-
         return view('projects.edit' , [
             'project' => Project::findOrFail($id),
+            'categories' => Category::pluck('title' , 'id')
         ]);
 
     }
