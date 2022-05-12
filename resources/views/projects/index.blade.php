@@ -32,7 +32,7 @@
         <div class="card mb-3" style="width: 16rem;">
            
                 @if ($project->image)
-                    <img class="img-thumbnail rounded float-start" src="/storage/{{$project->image}}" alt="{{$project->title}}">                    
+                    <img class="img-thumbnail rounded float-start" style="height: 150px; object-fit: cover;" src="/storage/{{$project->image}}" alt="{{$project->title}}">                    
                 @endif 
                 <div class="card-body">
                 

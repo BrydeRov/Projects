@@ -8,6 +8,9 @@ use App\Models\Project;
 use App\Models\Category;
 use App\Http\Requests\SaveProjectRequest;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use App\Events\ProjectSaved;
+
 
 class ProjectController extends Controller
 {
@@ -60,6 +63,8 @@ class ProjectController extends Controller
         $project->image = $request->file('image')->store('ProjectImages');
  
         $project->save();
+
+        ProjectSaved::dispatch($project);
 
         return redirect()->route('project.index')->with('created', 'El proyecto se ha creado exitosamente');
 
@@ -115,6 +120,11 @@ class ProjectController extends Controller
             $project->image = $request->file('image')->store('ProjectImages');
 
             $project->save();
+
+            ProjectSaved::dispatch($project);
+
+            
+
         }else{
             $project->update(array_filter($request->validated()));
         }
@@ -138,6 +148,6 @@ class ProjectController extends Controller
         Storage::delete($project->image);
         $project->delete();
 
-        return redirect()->route('project.index')->with('destroyed', 'El proyecto se ha elimindao exitosamente');
+        return redirect()->route('project.index')->with('destroyed', 'El proyecto se ha eliminado exitosamente');
     }
 }
